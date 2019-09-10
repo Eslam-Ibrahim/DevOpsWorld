@@ -13,7 +13,7 @@ stages:
         pool:
           vmImage: 'ubuntu-16.04'
         steps:
-          - scripts: |
+          - script: |
               echo 'build passed' 
 
   - stage: 'test'
@@ -26,7 +26,7 @@ stages:
         pool:
           vmImage: 'ubuntu-16.04'
         steps:
-          - scripts: |
+          - script: |
               echo 'test passed' 
   - stage: 'pack'
     displayName: 'pack-mvc'
@@ -38,7 +38,7 @@ stages:
         pool:
           vmImage: 'ubuntu-16.04'
         steps:
-          - scripts: |
+          - script: |
               echo 'pack passed' 
 
   - stage: 'deploy'
@@ -51,12 +51,7 @@ stages:
         pool:
           vmImage: 'ubuntu-16.04'
         steps:
-          - scripts: |
+          - script: |
               echo 'deploy passed' 
-triggers:
-  - branches:
-    include:
-      - master
-  - pr:
-  - tags:
-variables:                 
+trigger:
+- master
