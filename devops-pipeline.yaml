@@ -5,10 +5,10 @@ name: $(date:yyyyMMdd)$(rev:rr) #201907.00
 stages:
   - stage: 'build'
     displayName: 'built-mvc'
-    condition: succeded()
+    condition: succeeded()
     jobs:
       - job:
-        condition: succeded()
+        condition: succeeded()
         displayName: 'build-job'
         pool:
           vmImage: 'ubuntu-16.04'
@@ -18,10 +18,10 @@ stages:
 
   - stage: 'test'
     displayName: 'test-mvc'
-    condition: succeded()
+    condition: succeeded()
     jobs:
       - job:
-        condition: succeded()
+        condition: succeeded()
         displayName: 'test-job'
         pool:
           vmImage: 'ubuntu-16.04'
@@ -30,10 +30,10 @@ stages:
               echo 'test passed' 
   - stage: 'pack'
     displayName: 'pack-mvc'
-    condition: succeded()
+    condition: succeeded()
     jobs:
       - job:
-        condition: succeded()
+        condition: succeeded()
         displayName: 'pack-job'
         pool:
           vmImage: 'ubuntu-16.04'
@@ -43,10 +43,10 @@ stages:
 
   - stage: 'deploy'
     displayName: 'deploy-mvc'
-    condition: succeded()
+    condition: succeeded()
     jobs:
       - job:
-        condition: succeded()
+        condition: succeeded()
         displayName: 'deploy-job'
         pool:
           vmImage: 'ubuntu-16.04'
