@@ -1,0 +1,62 @@
+# deveops - pipeline
+
+name: $(date:yyyyMMdd)$(rev:rr) #201907.00
+
+stages:
+  - stage: 'build'
+    displayName: 'built-mvc'
+    condition: succeded()
+    jobs:
+      - job:
+        condition: succeded()
+        displayName: 'build-job'
+        pool:
+          vmImage: 'ubuntu-16.04'
+        steps:
+          - scripts: |
+              echo 'build passed' 
+
+  - stage: 'test'
+    displayName: 'test-mvc'
+    condition: succeded()
+    jobs:
+      - job:
+        condition: succeded()
+        displayName: 'test-job'
+        pool:
+          vmImage: 'ubuntu-16.04'
+        steps:
+          - scripts: |
+              echo 'test passed' 
+  - stage: 'pack'
+    displayName: 'pack-mvc'
+    condition: succeded()
+    jobs:
+      - job:
+        condition: succeded()
+        displayName: 'pack-job'
+        pool:
+          vmImage: 'ubuntu-16.04'
+        steps:
+          - scripts: |
+              echo 'pack passed' 
+
+  - stage: 'deploy'
+    displayName: 'deploy-mvc'
+    condition: succeded()
+    jobs:
+      - job:
+        condition: succeded()
+        displayName: 'deploy-job'
+        pool:
+          vmImage: 'ubuntu-16.04'
+        steps:
+          - scripts: |
+              echo 'deploy passed' 
+triggers:
+  - branches:
+    include:
+      - master
+  - pr:
+  - tags:
+variables:                 
