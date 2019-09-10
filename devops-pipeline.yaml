@@ -14,7 +14,7 @@ stages:
           vmImage: 'ubuntu-16.04'
         steps:
           - script: |
-              echo 'build working...' 
+              echo 'build workiiiiing...' 
 
   - stage: 'test'
     displayName: 'test-mvc'
