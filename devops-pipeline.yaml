@@ -27,7 +27,11 @@ stages:
           vmImage: 'ubuntu-16.04'
         steps:
           - script: |
+              dotnet tool install --global dotnet-sonarscanner --version 4.6.2
+              dotnet <path to SonarScanner.MSBuild.dll> begin /k:"DevOpsWorld" /o:"eslam-ibrahim" /d:sonar.login="2dc3d085031e31b21b09e4875df94c0da69a459" 
+              dotnet build
               dotnet test /p:CollectCoverage=true
+              dotnet end /d:sonar.login="2dc3d085031e31b21b09e4875df94c0da69a459"
   - stage: 'pack'
     displayName: 'pack-mvc'
     condition: succeeded()
